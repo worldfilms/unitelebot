@@ -14,7 +14,7 @@ from sql_helpers.filters_sql import get_filter, add_filter, remove_filter, get_a
 from uniborg.util import admin_cmd
 
 
-DELETE_TIMEOUT = 300
+DELETE_TIMEOUT = 1
 TYPE_TEXT = 0
 TYPE_PHOTO = 1
 TYPE_DOCUMENT = 2
@@ -51,8 +51,6 @@ async def on_snip(event):
                 else:
                     media = None
                 message_id = event.message.id
-                if event.reply_to_msg_id:
-                    message_id = event.reply_to_msg_id
                 await borg.send_message(
                     event.chat_id,
                     snip.reply,
